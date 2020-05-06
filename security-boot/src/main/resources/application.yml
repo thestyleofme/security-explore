@@ -1,0 +1,11 @@
+server:
+  port: 6060
+spring:
+  application:
+    name: security-boot
+  resources:
+    chain:
+      cache: false # 开发时使用，resource文件夹下的资源不进行缓存处理，即每次都需要去加载
+
+
+
