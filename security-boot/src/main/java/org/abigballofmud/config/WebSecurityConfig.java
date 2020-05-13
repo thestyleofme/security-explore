@@ -2,8 +2,10 @@ package org.abigballofmud.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -16,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @since 1.0
  */
 @Configuration
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
@@ -46,10 +49,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http     // 跨站请求伪造 cross-site request forgery
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/test1").hasAuthority("p1")
-                .antMatchers("/test2").hasAuthority("p2")
+                // .antMatchers("/r/r1").hasAuthority("p1")
+                // .antMatchers("/r/r2").hasAuthority("p2")
                 // test开头的必须认证通过
-                .antMatchers("/test*").authenticated()
+                .antMatchers("/r/**").authenticated()
                 // 其他请求放过
                 .anyRequest().permitAll()
                 .and()
@@ -59,6 +62,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login-view")
                 .loginProcessingUrl("/login")
                 // 自定义登陆成功后的页面地址
-                .successForwardUrl("/login-success");
+                .successForwardUrl("/login-success")
+                .and()
+                // 默认如果需要就创建一个session登录时
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                .and()
+                // 自定义logout
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login-view?logout");
+
     }
 }

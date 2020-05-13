@@ -19,7 +19,7 @@ public class TestBCrypt {
     @Test
    public void testBCrypt(){
         // 对密码加密
-        String hashpw = BCrypt.hashpw("123", BCrypt.gensalt());
+        String hashpw = BCrypt.hashpw("456", BCrypt.gensalt());
         System.out.println(hashpw);
         // 对密码校验
         boolean checkpw1 = BCrypt.checkpw("123", "$2a$10$hMtxppujq6W..Mft5gLG2OtRr9FcRShxN2.nwzg.wiNW6Yc4YsAii");

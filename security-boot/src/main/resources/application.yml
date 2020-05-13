@@ -6,6 +6,11 @@ spring:
   resources:
     chain:
       cache: false # 开发时使用，resource文件夹下的资源不进行缓存处理，即每次都需要去加载
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/security_explore?useUnicode=true&characterEncoding=utf-8&useSSL=false}
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    password: ${SPRING_DATASOURCE_PASSWORD:tse@9527}
+    driver-class-name: com.mysql.jdbc.Driver
 
 
 
