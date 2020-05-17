@@ -1,0 +1,27 @@
+server:
+  port: 53020
+spring:
+  application:
+    name: auth-service
+  resources:
+    chain:
+      cache: false # 开发时使用，resource文件夹下的资源不进行缓存处理，即每次都需要去加载
+    # spring.resources.add-mappings=false  为静态资源设置默认处理
+    # spring.mvc.throw-exception-if-no-handler-found=true
+    # 这样可以将自定义全局404异常方便Restful使用
+    # 但是spring.resources.add-mappings=false会导致swagger也不能访问
+    # 原文链接：https://blog.csdn.net/StruggleRookie/article/details/104790570/
+    add-mappings: false
+  mvc:
+    throw-exception-if-no-handler-found: true
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/security_explore?useUnicode=true&characterEncoding=utf-8&useSSL=false}
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    password: ${SPRING_DATASOURCE_PASSWORD:tse@9527}
+    driver-class-name: com.mysql.jdbc.Driver
+  freemarker:
+    suffix: .html
+    request-context-attribute: request
+
+
+

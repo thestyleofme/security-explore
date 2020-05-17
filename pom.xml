@@ -22,6 +22,8 @@
     <modules>
         <module>session-ssm</module>
         <module>security-ssm</module>
+        <module>security-boot</module>
+        <module>distributed-security</module>
     </modules>
 
     <properties>
