@@ -1,4 +1,4 @@
-package org.abigballofmud.security.distributed.auth.model;
+package org.abigballofmud.security.distributed.common.model;
 
 import lombok.*;
 

@@ -1,0 +1,20 @@
+eureka:
+  instance:
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
+  server:
+    evictionIntervalTimerInMs: 4000
+    enable-self-preservation: false
+  client:
+    # 检索服务选项，注册中心不需要检索服务
+    fetch-registry: ${EUREKA_CLIENT_FETCH_REGISTRY:false}
+    # 注册中心将自己作为客户端来尝试注册自己，注册中心集群环境下需开启此配置
+    register-with-eureka: ${EUREKA_CLIENT_REGISTER_WITH_EUREKA:false}
+    instance-info-replication-interval-seconds: 10
+    serviceUrl:
+      defaultZone: ${EUREKA_DEFAULT_ZONE:http://localhost:8000/eureka}
+    registryFetchIntervalSeconds: 10
+    disable-delta: true
+
+

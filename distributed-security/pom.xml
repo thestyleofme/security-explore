@@ -10,6 +10,9 @@
     <modules>
         <module>distributed-security-uaa</module>
         <module>distributed-security-order</module>
+        <module>distributed-security-discovery</module>
+        <module>distributed-security-zuul</module>
+        <module>distributed-security-common</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -39,15 +42,6 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-jwt</artifactId>
-            <version>1.1.0.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security.oauth.boot</groupId>
-            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>mysql</groupId>
@@ -56,12 +50,12 @@
             <scope>runtime</scope>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

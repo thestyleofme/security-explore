@@ -1,0 +1,41 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: distributed-zuul
+
+eureka:
+  instance:
+    # 以IP注册到注册中心
+    preferIpAddress: ${EUREKA_INSTANCE_PREFER_IP_ADDRESS:true}
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
+  client:
+    serviceUrl:
+      # 注册中心地址
+      defaultZone: ${EUREKA_DEFAULT_ZONE:http://localhost:8000/eureka}
+    registryFetchIntervalSeconds: 10
+    disable-delta: true
+
+zuul:
+  ignored-services:
+    - auth-service
+  add-host-header: true
+  # zuul.sensitive-headers (默认值 Cookie,Set-Cookie,Authorization)
+  # 是指 http header 中的敏感信息，默认情况下，ZUUL 是不转发的
+  # OAuth2 的鉴权信息是放在 Authorization 中，所以需要从配置中移除
+  # 原文链接 https://www.cnblogs.com/victorbu/p/11168456.html
+  sensitive-headers:
+    - Cookie
+    - Set-Cookie
+  routes:
+    auth-service:
+      stripPrefix: false
+      path: /oauth/**
+      serviceId: auth-service
+    order-service:
+      stripPrefix: false
+      path: /order/**
+      serviceId: order-service
+
+

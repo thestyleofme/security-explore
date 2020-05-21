@@ -4,8 +4,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.abigballofmud.security.distributed.auth.model.PermissionDTO;
-import org.abigballofmud.security.distributed.auth.model.UserDTO;
+import org.abigballofmud.security.distributed.common.model.UserDTO;
+import org.abigballofmud.security.distributed.common.model.PermissionDTO;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

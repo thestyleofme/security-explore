@@ -25,5 +25,16 @@ spring:
     suffix: .html
     request-context-attribute: request
 
-
+eureka:
+  instance:
+    # 以IP注册到注册中心
+    preferIpAddress: ${EUREKA_INSTANCE_PREFER_IP_ADDRESS:true}
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
+  client:
+    serviceUrl:
+      # 注册中心地址
+      defaultZone: ${EUREKA_DEFAULT_ZONE:http://localhost:8000/eureka}
+    registryFetchIntervalSeconds: 10
+    disable-delta: true
 
